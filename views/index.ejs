@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="theme-color" content="#303f9f">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>MOCAAI</title>
+        <link rel="manifest" href="../../manifest.json">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/custom.css">
+        <link rel="stylesheet" href="./css/materialize.css">
+        <link rel="stylesheet" href="./css/materialdesignicons.css" media="all"/>
+        <link rel="shortcut icon" href="./assets/img/favicons.ico" />
+
+    
+     <!-- CHAMADA SERVICE WORKER-->
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('../../sw.js')
+                    .then(function() {
+                        console.log('Service Worker Registrado');
+                    })
+                    .catch(function() {
+                        console.warn('Service Worker Falhou');
+                    });
+            }
+        </script>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <!-- MENU LATERAL-->
+
+            <div class="navbar-fixed">
+                <nav class="gradient-45deg-indigo-blue">
+                    <div class="nav-wrapper">
+
+                <a class="brand-logo right"><img src="./assets/img/brasao.png"></a>
+                
+                <a class="brand-logo titleapp center">MOCAAI
+                    <br><br>
+                    <h6 class="center">Mobile Cloud Applications Artificial Intelligence</h6>
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi mdi-menu"></i></a>
+                
+                <ul class="right hide-on-med-and-down">
+                        
+                    <li><a>O Projeto</a></li>
+                    <li><a href="#">Conceitos</a></li>
+                    <li><a href="#">Tecnologias</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    
+                </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <ul class="side-nav" id="mobile-demo">
+
+                <li>
+                    <div class="user-view">
+                        <div class="background"><img src="./assets/img/brain3.jpg"></div>
+                        <a href="#!user"><img class="circle" src="./assets/img/hs.png"></a>
+                        <a href="#!name"><span class="white-text name"><strong>Henning Summer</strong></span></a>
+                        <a href="#!email"><span class="white-text email">henningsummer3@gmail.com</span></a>
+                        <li><div class="divider"></div></li>
+                    </div>
+                </li>
+                
+                <li><a href="#">O Projeto</a></li>
+                <li><a href="">Conceitos</a></li>
+                <li><a href="">Tecnologias</a></li>
+                <li><a href="">Sobre</a></li>
+
+                
+
+            </ul>
+        
+        </header>
+
+        <!-- PROCESSAR IMAGEM -->
+    
+        <div id="loaderApp" class="progress center">
+            <div class="indeterminate"></div>
+        </div>
+
+           
+
+        <div class="center" id="contentPage">
+
+                <div class="carousel carousel-slider center">
+                        <div class="carousel-item grey gradient-45deg-blue-grey-blue darken-4 white-text" href="#one!">
+                          <div id="container3" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                        </div>
+                        <div class="carousel-item amber white-text" href="#two!">
+                          <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        </div>
+                        <div class="carousel-item green white-text" href="#three!">
+                          <h2>Third Panel</h2>
+                          <p class="white-text">This is your third panel</p>
+                        </div>
+                        <div class="carousel-item blue white-text" href="#four!">
+                          <h2>Fourth Panel</h2>
+                          <p class="white-text">This is your fourth panel</p>
+                        </div>
+                        <input type="hidden" id="file" name="Imagem"/>
+                </div>
+        </div>
+
+        <div class="row center">
+                <i class="mdi nuvem pulse mdi-cloud-sync" style="position: absolute; margin: -100px -18px; z-index: 11; color: chartreuse; font-size: 30px; display: none;"></i>
+                <i class="mdi local pulse mdi-cellphone-android" style="position: absolute; margin: -100px -18px; z-index: 11; color: #00ffc6e0; font-size: 30px; display: none;"></i>
+                <div id="loaderPage" class="preloader-wrapper big">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- MONITOR-->
+        <div class="row ajuste">
+            <form id="enviarMelhor">
+                <input type="hidden" id="dadosMelhor">
+            </form>
+            <form id="enviarRNA">
+                <input type="hidden" id="dadosRNA">
+            </form>
+
+            <form id="enviarDados">
+                <!-- DADOS REDE -->
+                <input type="hidden" value="" id="NetStatus"  name="netStatus">
+                <input type="hidden" value="" id="RedeStatus"  name="redeStatus">
+                <input type="hidden" value="" id="LinkStatus"  name="linkStatus">
+                <input type="hidden" value="" id="TtsStatus"  name="ttsStatus">
+                <input type="hidden" value="" id="MovelStatus"  name="movelStatus">
+                <!-- DADOS BATERIA -->
+                <input type="hidden" value="" id="BatStatus"  name="bateriaStatus">
+                <input type="hidden" value="" id="NivelStatus"  name="nivelStatus">
+                <!-- DADOS DEVICE -->
+                <input type="hidden" value="" id="CpuStatus"  name="cpuStatus">
+                <input type="hidden" value="" id="SysStatus"  name="sysStatus">
+                <input type="hidden" value="" id="VerStatus"  name="verStatus">
+                <input type="hidden" value="" id="DevStatus"  name="devStatus">
+                <input type="hidden" value="" id="DevRes"  name="devRes">
+                <!-- DADOS TAREFA -->
+                <input type="hidden" value="" id="TipoStatus"  name="tipoStatus">
+                <input type="hidden" value="" id="TamStatus"  name="tamStatus">
+                <input type="hidden" value="" id="DimStatus"  name="dimStatus">
+                <!-- DADOS TEMPO E TIPO -->
+                <input type="hidden" value="Local" id="OndeProc"  name="ondeProc">
+                <input type="hidden" value="" id="TempoExec"  name="tempoExec">
+                <input type="hidden" value="" id="ImgDetec"  name="imgDetec">
+                <input type="hidden" value="" id="ImgNome"  name="imgNome">
+                <!-- DADOS DA DATA DO ENVIO-->
+                <input type="hidden" value="" id="DataExec"  name="dataExec">
+                <input type="hidden" value="" id="EscolhaRNA"  name="escolhaRNA">
+            </form>
+
+            <input type="hidden" value="" id="TempoTotalLocal">
+
+            <ul class="collapsible" data-collapsible="expandable">
+                <li>
+
+                    <div class="collapsible-header">                
+                        <span><i class="mdi mdi-monitor-multiple"></i  class="left">MONITOR</span> 
+                        <span class="new badge" data-badge-caption="Recursos">4</span>
+                        <span class="new badge blue" data-badge-caption="Parâmetros">14</span>
+                        
+                    </div>
+
+                    <div class="collapsible-body row centered">
+
+                      <!-- CARD DA REDE-->
+                      <div class="col s3">
+                          <div class="estilo-card responsive">
+                              <h1 class="card-title"><i class="mdi mdi-cloud-sync"></i class="left"> <strongi class="right truncate">CONN</strongi></h1>
+                              <div>
+                                  <div class="col s12 m12 l6 align-center"><p class="status center truncate"></p></div>              
+                                  <div class="col s12 m6 l5 align-center"><p class="rede center truncate"></p></div>
+                                  <div class="col s12 m6 l4 align-center"><p class="link center truncate"></p></div>
+                                  <div class="col s12 m6 l4 align-center"><p class="tts center  truncate"></p></div>
+                                  <div class="col s12 m6 l4 align-center"><p class="movel center truncate"></p></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- CARD BATERIA -->
+                      <div class="col s3">
+                          <div class="estilo-card responsive">
+                              <h1 class="card-title"><i class="mdi mdi-battery-unknown"></i class="left"> <strongi class="right truncate">BATT</strongi></h1>
+                              <div class="center">
+                                  <div class="col s12 m6 l3 align-center "> <p class="battery-percentage responsive truncate center"></p></div>              
+                                  <div class="col s12 m6 l4 align-center "><p class="battery responsive center"></p></div>
+                                  <div class="col s12 m12 l5 align-center"><p class="battery-status responsive center truncate"></p></div>
+                              </div>
+                          </div>
+                      </div>          
+
+                      <!-- CARD DA CPU-->
+                      <div class="col s3 m3 l3">
+                          <div class="estilo-card responsive">
+                              <h1 class="card-title"><i class="mdi mdi-cellphone-link"></i class="left"> <strongi class="right truncate">INFO</strongi></h1>
+                              <div class="centered">
+                                  <div class="col s12 m6 l4 align-center"><p id="devSTAT" class="responsive truncate center"></p></div>
+                                  <div class="col s12 m6 l4 align-center"><p id="devCPU" class="cpu-dev responsive center truncate"></p></div>
+                                  <div class="col s12 m12 l4 align-center"><p id="devSYS" class="cpu-sys responsive truncate center"></p></div>              
+                                  <div class="col s12 m6 l6 align-center"><p id="devVER" class="cpu-ver responsive center truncate"></p></div>
+                                  <div class="col s12 m6 l6 align-center"><p id="devRES" class="cpu-ver responsive center truncate"></p></div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- CARD DA TAREFA-->
+                      <div class="col s3">
+                          <div class="estilo-card responsive">
+                              <h1 class="card-title"><i class="mdi mdi-file-document"></i class="left"> <strongi class="right truncate">TASKS</strongi></h1>
+                              <div class="centered">
+                                  <div class="col s12 m12 l4 align-center"> <p class="arquivo responsive truncate center"></p></div>
+                                  <div class="col s12 m12 l4 align-center "> <p class="tamanho responsive truncate center"></p></div>              
+                                  <div class="col s12 m12 l4 align-center "><p class="dimensao responsive center truncate"></p></div>
+                              </div>
+                          </div>
+                      </div>
+                  
+
+                    </div>
+                </li>
+         
+                <li>
+                    <div class="collapsible-header">
+                        <span><i class="mdi mdi-robot"></i  class="left">RNA</span>
+                                <div class="switch row">
+                                        <label>
+                                          Off
+                                          <input type="checkbox">
+                                          <span class="lever"></span>
+                                          On
+                                        </label>
+                                    </div> 
+                      <span class="new badge blue" data-badge-caption="Precisão">87% de</span>
+                    </div>
+
+                    <!-- CARD DA NEURAL--> 
+                    <div class="collapsible-body row centered">
+                        <div class="row col s12 ">
+                              <div class="network-card">
+                                    
+                                   <h1 class="core-title truncate">NEURAL NETWORK</h1>
+
+                                   
+                                   <div class="network-box">
+                                        <strong class="network-percentage"></strong>
+                                        <!--<i class="battery"></i>-->
+                                        <div class="network-info">
+                                           <strong class="core-status"></strong>
+                                           <h6 id="contar"></h6>
+                                           <h6 id="faces"></h6>
+                                           <h6 id="tempoexe"></h6>
+                                           <h5 id="redeNeural"></h5>
+                                           <h6 id="redeNeural2"></h6>
+                                           
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </li>
+            </ul>
+        </div>
+
+        <div class="row"></div>
+
+        <!-- Botão Flutuante -->
+        <div class="fixed-action-btn click-to-toggle">
+
+            <a class="btn-floating btn-large blue">
+                <i class="mdi">
+                    <img class="imgFbtn" src="./assets/img/iconapp.png">
+                </i>
+            </a>
+
+            <ul>
+               <li id="btnOCR"><a class="btn-floating gradient-45deg-blue-grey-blue darken-1"><i class="mdi mdi-text-shadow"></i>OCR</a></li>
+               <li id="btnFIBO"><a class="btn-floating gradient-45deg-blue-grey-blue darken-2"><i class="mdi mdi-function"></i>FIBO</a></li>
+               <li id="btnFACE"><a class="btn-floating gradient-45deg-blue-grey-blue darken-4"><i class="mdi mdi-face"></i>FACE</a></li>
+               <li id="btnPEGAR"><a class="btn-floating gradient-45deg-blue-grey-blue darken-4"><i class="mdi mdi-database-plus"></i>COLETA</a></li>
+               <li id="btnHO"><a href="/" class="btn-floating gradient-45deg-blue-grey-blue darken-4"><i class="mdi mdi-home-circle"></i>HOME</a></li>
+            </ul>
+
+        </div>
+
+        <!--Rodapé-->
+        <!-- <div class="card-panel blue darken-4 amber-text z-depth-4 flow-text">
+
+            <blockquote>
+                <strong>Avaliar tempo de execução de Tarefas em Dispositivos e Nuvens Móveis</strong>
+            </blockquote>
+        
+        </div> -->
+
+        <!--Scripts da Aplicação-->
+        
+        <script src="./js/jquery-3.2.1.min.js"  
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+        <script src="./js/api/battery.js" async></script>
+        <script src="./js/api/core.js" async></script>
+        <script src="./js/api/network.js" async></script>
+        <script src="./js/jquery-form.js" async></script>
+        <script src="./js/rna/faceIA.js" async></script>
+        <script src="./js/rna/fiboIA.js" async></script>
+        <script src="./js/rna/ocrIA.js" async></script>
+        <script src="./js/rna/rnaMocaai.js" async></script>
+        <script src="./js/materialize.min.js"></script>
+        <script src="./js/chart/highcharts.js"></script>
+        <script src="./js/chart/exporting.js"></script>
+        <script src="./js/chart/export-data.js"></script>
+        <script src="./js/mcc/ocr.js" async></script>
+        <script src="./js/lib/ocrad.js" async></script>
+        <script src="./js/lib/tracking-min.js" async></script>
+        <script src="./js/lib/face-min.js" async></script>
+        <script src="./js/mcc/faces.js" async></script>
+        <script src="./js/mcc/fibo.js" async></script>
+        
+        
+        
+        
+        <!-- <script src="./js/chart.js"></script> -->
+        <script src="./js/chart/chart.js"></script>
+        <script src="./js/chart/pizza.js"></script>
+        
+        
+        <!-- Scripts de Ações Materialize -->
+
+        <script>
+            
+            $(".button-collapse").sideNav();
+            $('#tabs-swipe-demo').tabs({ 'swipeable': true });
+            $('.carousel.carousel-slider').carousel({
+                fullWidth: true,
+                indicators: true
+            });
+                  
+            $('#btnOCR').click(function(){
+                $.ajax({
+                    url: '/ocr',
+                    method: 'get',
+                    success: function(data){
+                        $('#contentPage').html(data);
+                    }
+                });
+                $('.imgFbtn').click();
+            });
+
+             $('#btnFIBO').click(function(){
+                $.ajax({
+                    url: '/fibo',
+                    method: 'get',
+                    success: function(data){
+                        $('#contentPage').html(data);
+                    }
+                });
+                $('.imgFbtn').click();
+            });
+
+            $('#btnFACE').click(function(){
+                $.ajax({
+                    url: '/faces',
+                    method: 'get',
+                    success: function(data){
+                        $('#contentPage').html(data);;
+                    }
+                });
+                $('.imgFbtn').click();
+            });
+
+            // $('#btnPEGAR').click(function(){
+            //     $.ajax({
+            //         url: '/pegarDados',
+            //         method: 'post',
+            //         success: function(data){
+            //             for (let i = 0; i < data.length; i++) {
+            //                 var element = data[i];
+                            
+            //                 $('#contentPage').html('#interno').append(element.devStatus+'<br>'+element.ondeProc+'<br>');
+            //             }
+            //             console.log(data);
+            //         }
+            //     });
+            //     //$('.imgFbtn').click();
+            // });
+
+            $('#btnPEGAR').click(function(){
+                $.ajax({
+                    url: '/monitor',
+                    method: 'get',
+                    success: function(data){
+                        $('#contentPage').html(data);
+                        // for (let i = 0; i < data.length; i++) {
+                        //     var element = data[i];
+                        //     console.log(element);
+                        //     for (let j = 0; j < element.length; j++) {
+                        //         var dado = element[j];
+                        //         $('#contentPage').append(dado+'<br>'+dado+'<br>');
+                        //     }
+                        // }
+                        console.log(data);
+                    }
+                });
+                $('.imgFbtn').click();
+            });
+        
+        </script>
+
+    </body>
+
+</html>

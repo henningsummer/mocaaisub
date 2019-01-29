@@ -1,0 +1,25 @@
+{
+    "name": "MOCAAI",
+    "short_name": "MOCAAI",
+    "theme_color": "#303f9f",
+    "background_color": "#44b4e7",
+    "display": "standalone",
+    "start_url": "./",
+    "icons": [{
+        "src": "../assets/img/iconapp.png",
+        "sizes": "272x275",
+        "type": "image/png"
+    },{"src": "../assets/img/iconapp.png",
+        "sizes": "194x194",
+        "type": "image/png"}
+    ,{"src": "../assets/img/iconapp.png",
+        "sizes": "96x96",
+        "type": "image/png"}
+    ,{"src": "../assets/img/iconapp.png",
+        "sizes": "76x76",
+        "type": "image/png"}
+    ,{"src": "../assets/img/iconapp.png",
+        "sizes": "36x36",
+        "type": "image/png"}
+    ]
+}

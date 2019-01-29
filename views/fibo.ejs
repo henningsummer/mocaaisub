@@ -1,0 +1,199 @@
+<!-- PROCESSAR IMAGEM - Contém a coleta das informações sobre os arquivos a serem processados-->
+
+    <h5 class="center">CÁLCULO DO FIBONNACI</h5>
+          
+    <div class="row col s6 offset-s4 center ajuste">
+        
+                
+            <div id="fiboValor" class="input-field col s12">
+                    <select>
+                      <option value="" disabled selected>Escolha um número da sequência</option>
+                      <option value="20">Fibo 20</option>
+                      <option value="21">Fibo 21</option>
+                      <option value="22">Fibo 22</option>
+                      <option value="23">Fibo 23</option>
+                      <option value="24">Fibo 24</option>
+                      <option value="25">Fibo 25</option>
+                      <option value="26">Fibo 26</option>
+                      <option value="27">Fibo 27</option>
+                      <option value="28">Fibo 28</option>
+                      <option value="29">Fibo 29</option>
+                      <option value="30">Fibo 30</option>
+                      <option value="31">Fibo 31</option>
+                      <option value="32">Fibo 32</option>
+                      <option value="33">Fibo 33</option>
+                      <option value="34">Fibo 34</option>
+                      <option value="35">Fibo 35</option>
+                      <option value="36">Fibo 36</option>
+                      <option value="37">Fibo 37</option>
+                      <option value="38">Fibo 38</option>
+                      <option value="39">Fibo 39</option>
+                      <option value="40">Fibo 40</option>
+                      
+                    </select>
+                    <label>Sequência Fibonnaci</label>
+            </div>
+        <form id="fiboForm" class="fibonum">
+            <input type="text" placeholder="Escolha um número entre 20 e 45" name="fibonacci" id="fiboValor2">
+        </form>
+        
+        <button id="LocalFibo" class="btn btnOff btn-success waves-effect waves-light gradient-45deg-blue-indigo">
+                Local
+                <i class="mdi mdi-function left"></i>
+        </button>
+        <button id="NuvemFibo" class="btn btnOff btn-success waves-effect waves-light gradient-45deg-blue-indigo">
+                Nuvem
+                <i class="mdi mdi-cloud-sync left"></i>
+        </button>
+        <!-- <button id="ColetaFibo" class="btn btnOff btn-success waves-effect waves-light gradient-45deg-blue-indigo">
+                Coleta
+                <i class="mdi mdi-database left"></i>
+        </button> -->
+        <button id="RNAFibo" class="btn btnOff btn-success waves-effect waves-light gradient-45deg-blue-indigo">
+                RNA
+                <i class="mdi mdi-robot"></i>
+        </button>
+    </div>
+<div>
+
+
+    <div id="fiboResult">
+
+    </div>
+    
+<!-- *****************************************************************************-->
+
+<script>
+var valor2 = 0;
+var valor = 0;
+var dataFRNA = 0;
+var dataRNAFibo = 0;
+var ondeProc= 0;
+var imgNome = 0;
+$(document).ready(function(){
+    $('select').material_select();   
+     
+    $('#fiboValor').change(function(){
+        $('option:selected').each(function(){
+            valor2 = $(this).val();
+            document.getElementById('fiboValor2').value = valor2;
+            document.querySelector('.arquivo').innerHTML = 'text/calc';
+            document.querySelector('.tamanho').innerHTML = document.getElementById('fiboValor2').value * 100000;
+            document.querySelector('.dimensao').innerHTML = document.getElementById('fiboValor2').value * 100000;
+            $('#fiboResult').html('');
+        })
+    })
+
+    valor = document.getElementById('fiboValor2').value;
+    $('#RNAFibo').click(function(){
+        var timeRNA = new Date().getTime();
+                var dataDia = new Date();
+                var data = dataDia.getDate()+'/'+
+    
+                (dataDia.getMonth()+1)+'/'+
+                dataDia.getFullYear()+
+                ' '+dataDia.getHours()+
+                ':'+dataDia.getMinutes()+
+                ':'+dataDia.getSeconds();
+
+                 dataRNAFibo  = {
+                    bn: document.getElementById('BatStatus').value.replace('%','')/100,
+                    cp: document.getElementById('CpuStatus').value.replace(' cores','')/10,
+                    di: document.getElementById('DimStatus').value.replace('x','')/100000000,
+                    ds: document.getElementById('DevStatus').value.replace('Moto G (5S) Plus','1').replace('Moto G 2014 LTE','2').replace('GT-I8262','3').replace('GT-S6810','4').replace('SM-J510MN','5')/10 || 0.6,
+                    lk: document.getElementById('LinkStatus').value.replace('undefined','500').replace(' Mb/s','')/1000,
+                    mv: document.getElementById('MovelStatus').value.replace('g','').replace('slow-2g','1')/10,
+                    nt: document.getElementById('NetStatus').value.replace('wifi','1').replace('cellular','2').replace('offline','3').replace('undefined','4')/10,
+                    bs: document.getElementById('NivelStatus').value.replace('Carregando','1').replace('Descarregando','2')/10,
+                    sy: document.getElementById('SysStatus').value.replace('Linux','1').replace('Windows','2').replace('iPhone','3')/10,
+                    rs: document.getElementById('RedeStatus').value.replace(' Mb/s','')/10,
+                    tm: document.getElementById('TamStatus').value.replace(' bytes','')/100000000,
+                    tf: document.getElementById('TipoStatus').value.replace('image/jpeg','1').replace('image/png','2').replace('text/calc','1')/10,
+                    tt: document.getElementById('TtsStatus').value.replace(' ms','')/1000,
+                    ve: document.getElementById('VerStatus').value.replace('Android ','').replace('.','')/1000,
+                    dr: document.getElementById('DevRes').value.replace('x','')/100000000,
+               };
+
+                var rnaFaceEscolha = validarMocaai(fiboIA(dataRNAFibo));
+                var localEscolha = parseFloat(rnaFaceEscolha[1]);
+                var nuvemEscolha = parseFloat(rnaFaceEscolha[3]);
+               dataFRNA = {
+                    netStatus: document.getElementById('NetStatus').value,
+                    redeStatus: document.getElementById('RedeStatus').value,
+                    linkStatus: document.getElementById('LinkStatus').value,
+                    ttsStatus: document.getElementById('TtsStatus').value,
+                    movelStatus: document.getElementById('MovelStatus').value,
+                    bateriaStatus: document.getElementById('BatStatus').value,
+                    nivelStatus: document.getElementById('NivelStatus').value,
+                    cpuStatus: document.getElementById('CpuStatus').value,
+                    sysStatus: document.getElementById('SysStatus').value,
+                    verStatus: document.getElementById('VerStatus').value,
+                    devStatus: document.getElementById('DevStatus').value,
+                    devRes: document.getElementById('DevRes').value,
+                    tipoStatus: document.getElementById('TipoStatus').value,
+                    tamStatus: document.getElementById('TamStatus').value,
+                    dimStatus: document.getElementById('DimStatus').value,
+                    ondeProc: localEscolha < nuvemEscolha ? "Nuvem" : "Local",
+              };
+               
+               //console.log(dataRNAFACE);
+               
+            //   var rnaFaceEscolha = validarMocaai(fiboIA(dataRNAFACE));
+            //   var localEscolha = parseFloat(rnaFaceEscolha[1]);
+            //   var nuvemEscolha = parseFloat(rnaFaceEscolha[3]);
+              var escolha = 0;
+              //ondeProc =  localEscolha < nuvemEscolha ? "Nuvem" : "Local";
+              //imgNome = 'fibo'+valor;
+              dataFRNA.ondeProc = ondeProc;
+              console.log(dataFRNA);
+              
+              console.log(nuvemEscolha +'-l '+localEscolha);
+
+               //console.log('Resultado: '+rnaFACEresult);
+                if (localEscolha < nuvemEscolha){
+                    escolha = "rna";
+                    fiboNuvem(valor,escolha,data,timeRNA,dataFRNA,localEscolha,nuvemEscolha);
+                }else{
+                    escolha = "rna"
+                    fiboLocal(valor,escolha,data,timeRNA,dataFRNA,localEscolha,nuvemEscolha);
+                }
+               
+            });
+
+    var fibos = [30];
+    var aux = 0;
+    var contar = [20,22,24,26,28,30,31,32,33,34,35,36,37,38,40];
+    
+    for (let i = 0; i < contar.length; i++) {
+        const element = contar[i];
+        $('#Fibo'+element).click(function(){
+            fiboLocal(element);
+        })
+    }
+
+    $('#ColetaFibo').click(function(){
+        if(aux < contar.length){
+            fiboLocal(contar[aux]);
+        }
+        aux++;
+    });
+
+
+    $('#NuvemFibo').click(function(){
+        $('#loaderPage').addClass('active loaders');
+        $('.nuvem').css('display','')
+        escolha = "nuvem";
+        fiboNuvem(valor,escolha);
+
+    })
+
+
+    $('#LocalFibo').click(function(){
+        $('#loaderPage').addClass('active loaders');
+        $('.local').css('display','')
+        escolha = "local";
+        fiboLocal(valor,escolha);
+    })
+
+});
+</script>

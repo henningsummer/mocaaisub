@@ -1,0 +1,64 @@
+{
+    "name": "mocaai",
+    "version": "1.0.0",
+    "description": "Mobile Cloud Application Artificial Intelligence",
+    "main": "app.js",
+    "dependencies": {
+        "brain.js": "^1.2.2",
+        "buffers": "^0.1.1",
+        "canvas": "^1.6.11",
+        "consign": "^0.1.6",
+        "ejs": "^2.5.7",
+        "express": "^4.16.2",
+        "express-validator": "^5.0.3",
+        "install": "^0.10.4",
+        "istanbul": "0.4.5",
+        "jquery": "^3.2.1",
+        "mdi": "^2.1.19",
+        "mongodb": "^2.2.10",
+        "multer": "^1.3.0",
+        "nan": "^2.0.9",
+        "node-pre-gyp": "^0.6.39",
+        "nodemon": "^1.18.3",
+        "norc": "^1.1.0",
+        "okrabyte": "^0.1.1",
+        "opencv": "^6.0.0",
+        "sweetalert": "^2.1.0"
+    },
+    "devDependencies": {
+        "tape": "^3.0.0",
+        "aws-sdk": "~2.1.20",
+        "glob": "^5.0.3",
+        "request": "^2.44.0"
+    },
+    "bundledDependencies": [
+        "node-pre-gyp"
+    ],
+    "scripts": {
+        "build": "node-gyp build",
+        "test": "node test/unit.js",
+        "install": "node-pre-gyp install --build-from-source"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/peterbraden/node-opencv.git"
+    },
+    "engines": {
+        "node": ">=0.12"
+    },
+    "keywords": [
+        "opencv",
+        "computer",
+        "vision",
+        "offloading"
+    ],
+    "author": "Henning Summer",
+    "license": "ISC",
+    "binary": {
+        "module_name": "opencv",
+        "module_path": "./build/{module_name}/v{version}/{configuration}/{node_abi}-{platform}-{arch}/",
+        "remote_path": "./{module_name}/v{version}/{configuration}/",
+        "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
+        "host": "https://node-opencv.s3.amazonaws.com"
+    }
+}
