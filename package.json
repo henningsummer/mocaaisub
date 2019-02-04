@@ -37,7 +37,8 @@
     "scripts": {
         "build": "node-gyp build",
         "test": "node test/unit.js",
-        "install": "node-pre-gyp install --build-from-source"
+        "install": "node-pre-gyp install --build-from-source",
+        "start": "node app.js"
     },
     "repository": {
         "type": "git",
