@@ -6,8 +6,8 @@ var connMongoDB = function(){
 	var db = new mongo.Db(
 		'teste3_RNA_3g_Face',
 		new mongo.Server(
-			'localhost', //string contendo o endereço do servidor
-			32768, //porta de conexão
+			'mongodb', //string contendo o endereço do servidor
+			27017, //porta de conexão
 			{}
 		),
 		{}
